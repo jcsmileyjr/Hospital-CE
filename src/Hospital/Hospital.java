@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Hospital {
     private static List<Doctor> doctors = new ArrayList<>();
-    private static Doctor foundDoctor;
 
     public Hospital(){}
 
@@ -20,19 +19,10 @@ public class Hospital {
         //create patient
         Patient pet = new Patient(name, treatment, donation, doctorName);
 
-        //find doctor and add patient
-        for(Doctor doc : doctors){
-            if(doc.getDoctorName().equals(doctorName)){
-                int isHere = doctors.indexOf(doc);//find the index of the pet in the array
-                Doctor foundDoctor = doctors.get(isHere);//get the pet from the array
-                foundDoctor.newPatient(pet);//add patient to doctor care
-                foundDoctor.viewPatient(pet);//show that the pet is being treated by a doctor
-                break;
-            }
-        }
-        //Doctor foundDoctor = Hospital.findDoctor(doctorName);
-        //foundDoctor.newPatient(pet);//add patient to doctor care
-        //foundDoctor.viewPatient(pet);//show that the pet is being treated by a doctor
+        //find the doctor, add the patient to the doctor care, and show that the doctor acknowledge them
+        Doctor doc =  Hospital.findDoctor(doctorName);
+        doc.newPatient(pet);
+        doc.viewPatient(pet);
     }
 
         //find a specific doctor based on name
@@ -47,23 +37,18 @@ public class Hospital {
             return foundDoctor;
         }
 
+
+
     public static void checkOutPatient( String doctorName,String petName){
+        Doctor doc = Hospital.findDoctor(doctorName);
 
-        for(int i = 0;i<doctors.size();i++){
-            Doctor doc = doctors.get(i);
-            if (doc.getDoctorName().equals(doctorName)) {
-                foundDoctor = doc;
-                break;
-            }
-        }
-
-        List<Patient> listOfPets = foundDoctor.getDoctorListOfPatient();
+        List<Patient> listOfPets = doc.getDoctorListOfPatient();
 
         for(int j = 0; j<listOfPets.size();j++){
             Patient pet = listOfPets.get(j);
             if(pet.getFullname().equals(petName)){
                 Patient foundPet = listOfPets.get(j);
-                foundDoctor.checkoutPatient(foundPet);
+                doc.checkoutPatient(foundPet);
                 break;
             }
         }
