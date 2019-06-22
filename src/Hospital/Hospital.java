@@ -35,18 +35,18 @@ public class Hospital {
         //foundDoctor.viewPatient(pet);//show that the pet is being treated by a doctor
     }
 
-    /*    //Could not get to work
+        //find a specific doctor based on name
         public static Doctor findDoctor(String doctorName){
-            Doctor foundDoctor;
+            Doctor foundDoctor = null;
             for(Doctor doc: doctors){
                 if(doc.getDoctorName().equals(doctorName)){
                     int isHere = doctors.indexOf(doc);
-                    return foundDoctor = doctors.get(isHere);
-
+                    foundDoctor = doctors.get(isHere);
                 }
             }
+            return foundDoctor;
         }
-        */
+
     public static void checkOutPatient( String doctorName,String petName){
 
         for(int i = 0;i<doctors.size();i++){
