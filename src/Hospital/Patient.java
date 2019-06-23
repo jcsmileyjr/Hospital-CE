@@ -12,7 +12,7 @@ public class Patient {
         this.fullname = fullname;
         this.treament = treament;
         this.donation = donation;
-        this.doctorName = doctorName;//??????? Is this needed
+        this.doctorName = doctorName;
     }
 
     public String getFullname() {

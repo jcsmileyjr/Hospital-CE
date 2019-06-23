@@ -29,7 +29,7 @@ public class Doctor {
 
     //print the doctor's schedule of pet treatments
     public void printSchedule(){
-        for(Patient pet : patient){
+        for(Patient pet : patient){//loop through the array of pets
             System.out.println(pet.getFullname() + " is in the Hospital for " + pet.getTreament());
         }
     }
@@ -43,7 +43,7 @@ public class Doctor {
 
     //view all pets under the care of this doctor
     public  void viewAllDoctorPatients(){
-        for(Patient pet : patient){
+        for(Patient pet : patient){//loop through a array of pets
             System.out.println(pet.getFullname()+ " is being treated for " + pet.getTreament() +  " and is a patient of " + this.fullName);
         }
     }

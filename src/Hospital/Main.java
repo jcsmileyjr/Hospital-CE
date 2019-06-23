@@ -62,11 +62,9 @@ public class Main {
                 if(choice == 3){
                     Scanner findPet = new Scanner(System.in);
                     System.out.println("What is your pet name?");
-                    String curedPetName = findPet.next();
-
+                    String curedPetName = findPet.nextLine();
                     Doctor myPetDoctor = Hospital.findMyPetDoctor(curedPetName);//find the pet's doctor
                     Hospital.checkOutPatient(myPetDoctor.getDoctorName(), curedPetName);//checkout the pet
-
                 }//end of choice 3
 
                 //INTERFACE TO VIEW ALL PATIENT
