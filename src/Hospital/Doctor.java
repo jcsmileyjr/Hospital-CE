@@ -21,11 +21,13 @@ public class Doctor {
         return this.fullName;
     }
 
+    //Remove a pet from a doctor.
     public void checkoutPatient(Patient pet){
         System.out.println(pet.getFullname() + " have been cured of " + pet.getTreament() +" &  has checkout.");
         patient.remove(pet);
     }
 
+    //print the doctor's schedule of pet treatments
     public void printSchedule(){
         for(Patient pet : patient){
             System.out.println(pet.getFullname() + " is in the Hospital for " + pet.getTreament());

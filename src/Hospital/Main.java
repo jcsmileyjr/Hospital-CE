@@ -8,13 +8,18 @@ import java.util.Scanner;
 
 public class Main {
     public  static void main(String[] args){
+        //TEST DATA
+        Hospital.checkInDoctor("Ted");
+        Hospital.checkInPatient("Crazy the Cat", "Doing Yoga", 5.75, "Ted");
+        /*End of test data*/
+
         String openForBusiness = "open";
 
         //while open, interface will ask the questions
         while(openForBusiness.equals("open")){
             Scanner menuChoice = new Scanner(System.in);
             try {
-                System.out.println("\n Please type in a number to make your choice \n 1) Check-in Doctor \n 2) Check-in Patient \n 3) Check-out Patient \n 4) View all Current Patients \n 5) Exit");
+                System.out.println("\n Please type in a number to make your choice \n 1) Check-in Doctor \n 2) Check-in Patient \n 3) Check-out Patient \n 4) View all Current Patients \n 5) View a doctor's schedule \n 6) Exit");
 
                 int choice = menuChoice.nextInt();
                 System.out.println("Your choice was " + choice);
@@ -69,8 +74,18 @@ public class Main {
                     Hospital.viewAllPatients();
                 }//end of choice 4
 
-                //INTERFACE TO EXIT HOSPITAL
+                //INTERFACE TO VIEW A DOCTOR'S SCHEDULE
                 if(choice == 5){
+                    Scanner whichDoctor = new Scanner(System.in);//
+                    System.out.println("Which Doctor's Schedule do you want to view");
+                    Hospital.viewAllDoctor();//print all working doctor names
+                    String chosenDoctor = whichDoctor.nextLine();//get user input
+                    Hospital.viewDoctorSchedule(chosenDoctor);//print the chosen doctor's schedule
+                    //whichDoctor.close();
+                }//end of choice 5
+
+                //INTERFACE TO EXIT HOSPITAL
+                if(choice == 6){
                     openForBusiness = "close";
                 }//end of choice 5
             } catch (InputMismatchException e) {

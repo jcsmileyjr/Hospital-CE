@@ -97,6 +97,12 @@ public class Hospital {
         return doctors;
     }
 
+    //View a chosen doctor's schedule
+    public static void viewDoctorSchedule(String doctorName){
+        Doctor doc = Hospital.findDoctor(doctorName);
+        doc.printSchedule();
+    }
+
 
 }
 
