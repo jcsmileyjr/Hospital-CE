@@ -1,5 +1,6 @@
 package Hospital;
 
+import javax.print.Doc;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +26,41 @@ public class Hospital {
         doc.viewPatient(pet);
     }
 
-        //find a specific doctor based on name
-        public static Doctor findDoctor(String doctorName){
-            Doctor foundDoctor = null;
-            for(Doctor doc: doctors){
-                if(doc.getDoctorName().equals(doctorName)){
-                    int isHere = doctors.indexOf(doc);
-                    foundDoctor = doctors.get(isHere);
+    //find a specific doctor based on name
+    public static Doctor findDoctor(String doctorName){
+        Doctor foundDoctor = null;
+        for(Doctor doc: doctors){
+            if(doc.getDoctorName().equals(doctorName)){
+                int isHere = doctors.indexOf(doc);
+                foundDoctor = doctors.get(isHere);
+            }
+        }
+        return foundDoctor;
+    }
+
+    //NOT USED ANYWHERE YET
+    public static Boolean ifDoctorExist(String doctorName){
+        Boolean foundDoctor = false;
+        for(Doctor doc: doctors){
+            if(doc.getDoctorName().equals(doctorName)){
+                foundDoctor = true;
+            }
+        }
+        return foundDoctor;
+    }
+
+    public static Doctor findMyPetDoctor(String petName){
+        Doctor foundDoc = null;//used to hold found doctor
+        for(Doctor doc: doctors){//Loop through a array of doctors
+            List<Patient> pets = doc.getDoctorListOfPatient();//get each doctor list of patients
+            for(Patient pet: pets){//Loop through a array of pets that belong to each doctor
+                if(pet.getFullname()==petName){
+                    foundDoc = doc;
                 }
             }
-            return foundDoctor;
         }
-
-
+        return foundDoc;
+    }
 
     public static void checkOutPatient( String doctorName,String petName){
         Doctor doc = Hospital.findDoctor(doctorName);
@@ -62,10 +85,16 @@ public class Hospital {
         }
     }
 
+    //print all Doctors checked in
     public static void viewAllDoctor(){
         for(Doctor doc : doctors){
             System.out.println("Doctor " + doc.getDoctorName() + " is working today.");
         }
+    }
+
+    //Return a array of doctor objects
+    public static List <Doctor> getDoctors(){
+        return doctors;
     }
 
 

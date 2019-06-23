@@ -46,6 +46,7 @@ public class Doctor {
         }
     }
 
+    //used in Hospital check out patient method
     public List<Patient> getDoctorListOfPatient(){
         return patient;
 
